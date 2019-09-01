@@ -1,0 +1,196 @@
+{% load static %} 
+<!DOCTYPE html>  
+<html lang="en"> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script> 
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<head> 
+
+   <meta charset="UTF-8">  
+    <title>Index</title>
+      
+<style>
+@font-face {
+  font-family: myFirstFont;
+  src: url({% static "Amaranth-Regular.otf" %});
+}
+@font-face {
+  font-family: font2;
+  src: url({% static "Aclonica.ttf" %});
+}
+.oval{
+  height: 90px;
+  width: 180px;
+  border-radius: 50%;
+}
+.redText
+{
+  color:red;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 50px 45px;
+}
+.bigbox
+{
+  margin-left:20px;
+  height:250px;
+  width:1200px;
+  border:1px solid black;
+  overflow-y:scroll;
+  font-family: myFirstFont;
+  background-image: url({% static "photo.jpeg" %});
+}
+</style>
+</head>  
+<body>   
+ <div ng-app="myApp" ng-controller="myCtrl">
+<h3>Now here we will start the work </h3>
+<div class="bigbox" id="content">So the, what was your favourite moment? Was it the time he left Craig Cumming with multiple facial fractures and in need of significant surgery on his cheek and jaw? A grisly question, no doubt, but this was Dale Steyn showing the first ingredients of a truly great fast bowler: raw pace and carnal instinct. At the age of 24 and in just his 15th Test, Steyn made it clear to batsmen around the world that he would be the bowler to fear most from a physical harm perspective in his generation. Confirming that he wasn't just brute speed, he also took 10 for 25 in the match. What about his 5 for 23 to bowl India out inside a session at Ahmedabad, sparking the famous picture of Steyn holding the ball aloft as he walked off alongside his two pacemates, Morne Morkel and Makhaya Ntini. The trio formed the sort of alliance that Steyn would have at every stage of his career - Vernon Philander took over from Ntini - in large part because Steyn's skill and genius allowed the other members of the attack to be who they needed to be while he shouldered the main wicket-taking burden. For South Africans, it could be his dismissal of a typically cocky Kevin Pietersen at Headingley later that year. Pietersen had schmoozed his way to a run-a-ball 45, but when Steyn out-thought him - holding back his length and nicking the batsman off - England fell to 106 for four in the second Test. Steyn went on to finish with seven wickets in a match that South Africa won by 10 wickets, the catalyst required for the Proteas to claim their first series win in England since readmission. </div>
+<textarea ng-click='start()' type="text" style="margin-top:30px" class="bigbox" ng-model="datas" ng-keypress="myFunc($event)"></textarea>
+<input class="form-control input-lg" type="text" ng-model="ss" value="1asa" >
+</div>
+<a href="" data-toggle="modal" data-target="#myModal" id="myModalShower"></a>
+<div class="modal fade" id="myModal" role="dialog" >
+    <div class="modal-dialog modal-lg" >
+      <div class="modal-content" style="height:400px">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">RESULTS</h4>
+        </div>
+        <div class="modal-body">
+           <table>
+           <tr><td class="oval" style = "background-image: url({% static 'kboard.jpg' %});"></td>
+           <td class="oval" style="padding-left: 50px;background-image: url({% static 'wrong.jpg' %});" ></td>
+           <td class="oval" style="background-image: url({% static 'adjusted3.jpg' %});" ></td>
+           </tr>
+           <tr><td style="text-align: center;font-family:font2;font-size:28px">TYPING SPEED</td>
+           </tr> 
+           </table> 
+           </div>               
+           <br> <br>
+           <input type="button" class="btn btn-primary" name="Add" value="Add" ng-click="datatodb()">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script>
+var ars="";var i1=0;var z1=0;var words=0;var no_corr=0;var chrac=0;
+var info=document.getElementById("content").innerHTML;
+//console.log("INFO: "+info);
+var info_arr=info.split(" ");
+var app = angular.module('myApp', []);
+app.controller('myCtrl', ['$scope',function($scope,$event) {
+      $scope.myFunc = function(event) {
+        //var currentElement = angular.element($event.target);
+        var str=$scope.datas;
+        console.log("THE : "+info_arr[i1]);
+        if(event.keyCode == 32)
+        	{
+        	console.log("SPace has reqd");
+        	console.log("The word was "+ars);
+        	//if word entered matches the value array
+        	if(ars==info_arr[i1])
+        		{
+        		var inf=document.getElementById("content").innerHTML;
+        		var inf_arr=inf.split(" ");
+        		var str=inf_arr[i1+z1];
+        		inf_arr[i1+z1]="<span class='redText'>"+str+"</span>";
+        		z1=z1+1;
+        		var z=0;
+        		inf="";
+        		while(z<inf_arr.length)
+        			{
+        			  inf=inf+inf_arr[z]+" ";
+        			  z++;
+        			}
+        		document.getElementById("content").innerHTML=inf;
+         		}
+        	else{
+            	no_corr=no_corr+1;
+            }
+        	i1=i1+1;
+        	ars="";
+        	}
+        
+        else if(event.keyCode == 8)
+        {
+        	event.stopPropagation();
+            event.preventDefault();
+            alert("You are not allowed to press backspace in TEST");
+        }
+        //var arr_str=str.split('');
+        else{	
+        chrac=chrac+1;
+        ars=ars+String.fromCharCode(event.keyCode);
+        console.log(event.keyCode + " " + String.fromCharCode(event.keyCode));//this will give you value of current element
+        }
+        };
+        var ss=10;var ss1=0;var max_min=ss/60;
+        $scope.start = function() {
+        	console.log("The ss is :"+ss);
+            if($scope.counting === true) return false;
+            $scope.counting = true;
+            console.log("The ss is 2nd:"+ss);
+            $scope.counter = setInterval($scope.updateCount, 1000);
+        };
+
+        $scope.updateCount = function() {
+            ss--;
+            console.log("The ss is :"+ss);
+            var min=ss/60;
+            var sec=ss%60;
+            if(min==0 && sec==0)
+            	{
+            	  var ts=(chrac/5)/max_min; 
+            	  var el5= document.getElementById("myModalShower");
+                  //alert("Typing Speed: "+ts + " WPM. Incorrect count : "+no_corr);
+            	  el5.click();
+            	}
+            $scope.ss=parseInt(min)+":"+parseInt(sec);
+            $scope.$apply();
+        }
+        
+    }]);
+    
+document.addEventListener("keydown", KeyCheck);  //or however you are calling your method
+function KeyCheck(event)
+{
+   var KeyID = event.keyCode;
+   switch(KeyID)
+   {
+      case 8:
+    	  {
+      alert("You cannot press backspace in test");
+      event.stopPropagation();
+      event.preventDefault();
+      break; 
+    	  }
+      case 46:
+    	  {
+      alert("You cannot press delete in test");
+      event.stopPropagation();
+      event.preventDefault();
+      break;
+    	  }
+      default:
+      break;
+   }
+}
+</script>
+</body>  
+</html>  
