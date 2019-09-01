@@ -58,7 +58,6 @@ table {
 <div class="bigbox" id="content">So the, what was your favourite moment? Was it the time he left Craig Cumming with multiple facial fractures and in need of significant surgery on his cheek and jaw? A grisly question, no doubt, but this was Dale Steyn showing the first ingredients of a truly great fast bowler: raw pace and carnal instinct. At the age of 24 and in just his 15th Test, Steyn made it clear to batsmen around the world that he would be the bowler to fear most from a physical harm perspective in his generation. Confirming that he wasn't just brute speed, he also took 10 for 25 in the match. What about his 5 for 23 to bowl India out inside a session at Ahmedabad, sparking the famous picture of Steyn holding the ball aloft as he walked off alongside his two pacemates, Morne Morkel and Makhaya Ntini. The trio formed the sort of alliance that Steyn would have at every stage of his career - Vernon Philander took over from Ntini - in large part because Steyn's skill and genius allowed the other members of the attack to be who they needed to be while he shouldered the main wicket-taking burden. For South Africans, it could be his dismissal of a typically cocky Kevin Pietersen at Headingley later that year. Pietersen had schmoozed his way to a run-a-ball 45, but when Steyn out-thought him - holding back his length and nicking the batsman off - England fell to 106 for four in the second Test. Steyn went on to finish with seven wickets in a match that South Africa won by 10 wickets, the catalyst required for the Proteas to claim their first series win in England since readmission. </div>
 <textarea ng-click='start()' type="text" style="margin-top:30px" class="bigbox" ng-model="datas" ng-keypress="myFunc($event)"></textarea>
 <input class="form-control input-lg" type="text" ng-model="ss" value="1asa" >
-</div>
 <a href="" data-toggle="modal" data-target="#myModal" id="myModalShower"></a>
 <div class="modal fade" id="myModal" role="dialog" >
     <div class="modal-dialog modal-lg" >
@@ -74,6 +73,12 @@ table {
            <td class="oval" style="background-image: url({% static 'adjusted3.jpg' %});" ></td>
            </tr>
            <tr><td style="text-align: center;font-family:font2;font-size:28px">TYPING SPEED</td>
+           <td style="text-align: center;font-family:font2;font-size:28px">INCORRECT</td>
+           <td style="text-align: center;font-family:font2;font-size:28px">ADJUSTED SPEED</td>
+           </tr> 
+           <tr><td style="text-align: center;font-family:font2;font-size:18px" id="ts"></td>
+           <td style="text-align: center;font-family:font2;font-size:18px" id="inc"></td>
+           <td style="text-align: center;font-family:font2;font-size:18px" id="as"></td>
            </tr> 
            </table> 
            </div>               
@@ -158,8 +163,11 @@ app.controller('myCtrl', ['$scope',function($scope,$event) {
             	{
             	  var ts=(chrac/5)/max_min; 
             	  var el5= document.getElementById("myModalShower");
-                  //alert("Typing Speed: "+ts + " WPM. Incorrect count : "+no_corr);
-            	  el5.click();
+                  console.log("Typing Speed: "+ts + " WPM. Incorrect count : "+no_corr);
+                  document.getElementById("ts").innerHTML=""+Math.round(ts);;document.getElementById("inc").innerHTML=""+no_corr;document.getElementById("as").innerHTML=""+ts-no_corr;
+            	  $scope.ts=ts;$scope.inc=no_corr;$scope.as=ts-no_corr
+                  el5.click();
+            	  
             	}
             $scope.ss=parseInt(min)+":"+parseInt(sec);
             $scope.$apply();
