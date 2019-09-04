@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<style>
+.center
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    bottom: 50%;
+    right: 50%;
+    margin-top: -80px;
+    margin-left: -150px;
+    width: 400px;
+    height: 400px;
+    text-align: center;
+    font-size:600px;
+    
+    transition: width 2s, height 2s, font-size 2s;
+}
+.center:hover {
+  top: 50%;
+    left: 50%;
+    margin-top: -80px;
+    margin-left: -150px;
+    width: 350px;height: 320px;
+font-size:30px;
+}
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+<div onload='loadData()' id='valu' class='center'>5</div>
+<script>
+function loadData()
+{
+	var el=document.getElementById('valu');
+	el.style.top= "50%";el.style.left= "50%";
+	//el.style.margin-top= "-80px";el.style.margin-left= "-150px";
+	el.style.width= "350px";el.style.height= "320px";
+	//el.style.font-size= "30px";
+}
+</script> 
+</body>
+</html>

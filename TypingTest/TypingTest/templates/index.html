@@ -31,6 +31,7 @@
   height: 90px;
   width: 180px;
   border-radius: 50%;
+  background-repeat: no-repeat;
 }
 .redText
 {
@@ -48,7 +49,6 @@ table {
   border:1px solid black;
   overflow-y:scroll;
   font-family: myFirstFont;
-  background-image: url({% static "photo.jpeg" %});
 }
 </style>
 </head>  
@@ -164,7 +164,7 @@ app.controller('myCtrl', ['$scope',function($scope,$event) {
             	  var ts=(chrac/5)/max_min; 
             	  var el5= document.getElementById("myModalShower");
                   console.log("Typing Speed: "+ts + " WPM. Incorrect count : "+no_corr);
-                  document.getElementById("ts").innerHTML=""+Math.round(ts);;document.getElementById("inc").innerHTML=""+no_corr;document.getElementById("as").innerHTML=""+ts-no_corr;
+                  document.getElementById("ts").innerHTML=""+Math.round(ts);;document.getElementById("inc").innerHTML=""+no_corr;document.getElementById("as").innerHTML=""+Math.round(ts)-no_corr;
             	  $scope.ts=ts;$scope.inc=no_corr;$scope.as=ts-no_corr
                   el5.click();
             	  
